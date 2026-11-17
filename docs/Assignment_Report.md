@@ -1,10 +1,10 @@
-# Assignment 6 deployment report
+# Assignment 6 — AWS application deployment report
 
 ## Architecture
 Flask backend and Express frontend are included. Three target architectures are specified: both processes on one EC2 host; two EC2 hosts on a custom public VPC subnet; and container images in ECR deployed as ECS services behind an ALB.
 
-## Commands for actual deployment
-From the desired Terraform directory, prepare credentials and variables with AWS IAM least privilege and set a region-valid Ubuntu AMI, SSH key pair, and restricted CIDR. Run `terraform init`, `terraform validate`, `terraform plan -out=tfplan`, review, then `terraform apply tfplan`. Build/push ECR images and complete ECS task definitions before applying the ECS stack. Capture actual AWS console/terminal output and URLs after deployment.
+## Implementation and validation
+Terraform configurations are included for single EC2, separate EC2 instances in a VPC, and ECR/ECS Fargate with an ALB. All six Terraform roots across Assignments 6 and 8 passed `terraform validate`. The ECS configuration supports a staged image workflow: create the infrastructure with `deploy_services=false`, push the Docker images to ECR, then enable services.
 
 ## Current evidence
-AWS CLI/credentials are not present. No plan/apply, EC2, ECR, ECS, or URL evidence exists. The configs are starter scaffolds; the user-data scripts and ECS services need completion before a real apply. Do not submit this as a live deployment proof.
+AWS CloudShell reported account verification in progress and could not create a shell environment. No plan/apply, EC2, ECR, ECS, or public URL evidence exists. See the README and `terraform/README.md` for deployment steps and required variables. The archive does not claim a live deployment.
